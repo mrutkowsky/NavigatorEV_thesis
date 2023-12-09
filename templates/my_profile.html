@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <title>Tesla way</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+.container {
+    display: grid; 
+    grid-auto-rows: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 10px 10px; 
+    grid-template-areas: 
+    "Blank Blank Blank Blank"
+    "Picture Model_panel Model_panel Edit"
+    "User_info Car_details Car_details Car_details"
+    "User_info Additional_details Additional_details Additional_details"; 
+    font-family: Inter;
+}
+
+.Picture { grid-area: Picture; justify-content: center; align-items: center;display: flex;}
+
+.User_info {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "User_info_descr User_info_descr User_info_descr User_info_descr"
+    "User_name User_name User_name_info User_name_info"
+    "User_adress User_adress User_adress_info User_adress_info"; 
+    grid-area: User_info; 
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.30);
+}
+
+.User_info_descr { grid-area: User_info_descr; text-align: center; justify-content: center; font-weight: 600; font-size: 20px; }
+
+.User_name { grid-area: User_name; font-weight: 600; text-align: center;}
+
+.User_name_info { grid-area: User_name_info; color: rgba(0, 0, 0, 0.50);text-align: center;}
+
+.User_adress { grid-area: User_adress; font-weight: 600; text-align: center;}
+
+.User_adress_info { grid-area: User_adress_info; color: rgba(0, 0, 0, 0.50);text-align: center;}
+
+.Car_details {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "Car_details_descr Car_details_descr . ."
+    "Acceleration Acceleration_info Range Range_info"
+    "Supercharging Supercharging_info Charging_Speed Charging_speed_info";
+    grid-area: Car_details; 
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.30);
+}
+
+.Acceleration { grid-area: Acceleration; font-weight: 600;}
+
+.Supercharging { grid-area: Supercharging; font-weight: 600;}
+
+.Car_details_descr { grid-area: Car_details_descr; text-align: center; justify-content: center; font-weight: 600; font-size: 20px; padding-bottom: 10px;}
+
+.Acceleration_info { grid-area: Acceleration_info; color: rgba(0, 0, 0, 0.50);}
+
+.Supercharging_info { grid-area: Supercharging_info; color: rgba(0, 0, 0, 0.50);}
+
+.Range { grid-area: Range; font-weight: 600;}
+
+.Charging_Speed { grid-area: Charging_Speed; font-weight: 600;}
+
+.Range_info { grid-area: Range_info; color: rgba(0, 0, 0, 0.50);}
+
+.Charging_speed_info { grid-area: Charging_speed_info; color: rgba(0, 0, 0, 0.50); }
+
+.Model_panel {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "Welcome Welcome ."
+    "Brand Brand Brankd_info"
+    "Model Model Model_info"; 
+    grid-area: Model_panel; 
+    font-size: 20px
+}
+
+.Welcome { grid-area: Welcome; text-align: center; font-weight: 600; font-size: 23px;}
+
+.Brand { grid-area: Brand; font-weight: 600; }
+
+.Brankd_info { grid-area: Brankd_info; color: rgba(0, 0, 0, 0.50); }
+
+.Model { grid-area: Model; font-weight: 600; }
+
+.Model_info { grid-area: Model_info; color: rgba(0, 0, 0, 0.50); }
+
+.Additional_details { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "Additional_detials_descr Additional_detials_descr . ."
+    ". . . ."
+    ". . . ."; 
+    grid-area: Additional_details; 
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.30);
+}
+
+.Additional_detials_descr { 
+    grid-area: Additional_detials_descr;
+    text-align: center; 
+    justify-content: center; 
+    font-weight: 600; 
+    font-size: 20px; 
+    padding-bottom: 10px; 
+    padding-top: 10px;
+}
+
+.Blank { grid-area: Blank; }
+
+.Edit {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". . ."
+    ". . ."
+    "Edit_button Edit_button ."; 
+  grid-area: Edit; 
+}
+
+.Edit_button { grid-area: Edit_button; }
+
+.myButton {
+    box-shadow: 0px 0px 0px 0px #ffffff;
+    background-color:#000000;
+    border-radius:28px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #d6d6d6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myButton:hover {
+	background-color:#cccccc;
+}
+
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Make it a circle */
+    background: radial-gradient(circle, #ff0000, #bb45ca); /* Add the gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* Set the text color to contrast with the background */
+}
+</style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: Inter;">
+        <a class="navbar-brand" href="#"></a>
+        <div class="collapse navbar-collapse" id="navbarNav" style="font-family: Inter;">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./">Ride planner</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/my_profile">My profile</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="Blank"></div>
+        <div class="Picture">
+            <div class="circle">
+                <div class="letter">{{ user_data['name'][0] }}</div>
+            </div>
+        </div>
+        <div class="Model_panel">
+            <div class="Welcome"> Welcome {{ user_data['name'] }}!</div>
+            <div class="Brand">Brand</div>
+            <div class="Brankd_info">{{ user_data['brand'] }}</div>
+            <div class="Model">Model</div>
+            <div class="Model_info">{{ user_data['model'] }}</div>
+        </div>
+        <div class="Edit">
+            <div class="Edit_button">
+                <a class="Edit, Plan, myButton" type="submit" style="width: 98px; height: 36px; text-align: center; color: rgb(255, 255, 255); font-size: 15px; font-family: Inter; font-weight: 600; word-wrap: break-word;" href="/edit_profile">Edit</a>
+            </div>
+        </div>
+        <div class="Car_details">
+            <div class="Car_details_descr">Vehicle details</div>
+            <div class="Acceleration">Acceleration</div>
+            <div class="Acceleration_info">{{ user_data['acceleration'] }}</div>
+            <div class="Supercharging">Supercharging</div>
+            <div class="Supercharging_info">{{ user_data['supercharging'] }}</div>
+            <div class="Range">Range</div>
+            <div class="Range_info">{{ user_data['range'] }}</div>
+            <div class="Charging_Speed">Charging Speed</div>
+            <div class="Charging_speed_info">{{ user_data['charging_speed'] }}</div>
+        </div>
+        <div class="Additional_details">
+            <div class="Additional_detials_descr">Additional details</div>
+        </div>
+        <div class="User_info">
+            <div class="User_info_descr">User details</div>
+            <div class="User_name">Name</div>
+            <div class="User_name_info">{{ user_data['name'] }}</div>
+            <div class="User_adress">Adress</div>
+            <div class="User_adress_info">{{ user_data['adress'] }}</div>
+        </div>
+      </div>
+</body>
+</html>

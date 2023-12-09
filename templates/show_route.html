@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block widget %}
+<div style="align-items: right; padding-bottom: 3%; padding-left: 20%; padding-top: 2%;">
+    <a class="Plan myButton" href="/" style="width: 220px; height: 50px; text-align: center; color: rgb(255, 255, 255); font-size: 15px; font-family: Inter; font-weight: 600; word-wrap: break-word;">New route</a>
+</div>
+{% endblock %}
+{% block content %}
+    <div class="results">
+        <div style="padding: 5%;">
+            <p>Result from the algorithm:</p>
+            <p>Connections between places: {{ results['route_connections'] }}</p>
+            <!-- <p>path_with_biggest_min : {{ results['path_with_biggest_min'] }}</p> -->
+            <p>Suggested path : {{ results['path_with_smallest_max'] }}</p>
+            <p>Shortest path: {{ results['shortest_path'] }}</p>
+            <!-- <p>charging_info: {{ results['charging_info'] }}</p> -->
+            <p>Charging suggestions for suggested path : {{ results['charging_suggestions'] }}</p>
+        </div>
+    </div>
+{% endblock %}
+{% block plot %}
+    <div>
+        <img src="{{ url_for('static', filename=plot_path) }}" alt="User Image" style=" border-radius: 20px; border: 3px solid rgba(0, 0, 0, 0.3); padding: 5%;">
+    </div>
+{% endblock %}

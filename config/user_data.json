@@ -1,0 +1,11 @@
+{
+    "name": "Jan",
+    "adress": "Wroclaw, ul. Ciasteczkowa 12",
+    "brand": "Tesla",
+    "model": "Model 3",
+    "acceleration": "6.1 s 0-100 km/h",
+    "supercharging": "170 kW Max",
+    "range": "513 km",
+    "charging_speed": "Up to 282 km added in 15 minutes",
+    "additional details": ""
+}

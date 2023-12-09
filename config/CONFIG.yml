@@ -1,0 +1,8 @@
+nodes_number: 10
+connections_number: 12
+amount_of_nodes_with_chargers: 0.6
+min_travel_time: 2
+max_travel_time: 8
+min_travel_time_difference: 1
+max_travel_time_difference: 3
+vehicle_range: 12
