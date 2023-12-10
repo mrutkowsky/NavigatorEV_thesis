@@ -258,18 +258,6 @@ def add_display_path_info(G, pos, connections, graph_connections, edge_list, edg
 
     return G, pos, connections
 
-def display_path_without_range(graph_connections, title, connections, edge_list, edge_distance):
-    type_range = False
-    G = nx.Graph()
-    pos = nx.spring_layout(G, seed=7)  # positions for all nodes - seed for reproducibility
-    G, pos, connections = add_display_path_info(G, pos, connections, graph_connections, edge_list, edge_distance, type_range)
-    ax = plt.gca()
-    ax.margins(0.08)
-    plt.title(f"{title}\n Values on edges are equal to best/worst travel time between nodes")
-    plt.axis("off")
-    plt.tight_layout()
-    plt.show()
-
 def update_results(results, biggest_min, smallest_max, path_with_biggest_min, path_with_smallest_max):
     for elem in results:
         if results[elem][0]>biggest_min:
