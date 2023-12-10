@@ -75,7 +75,7 @@ def add_nodes_with_connections(nodes, connections, edge_list, nodes_number, conn
             edge_list[(nodes[random_num2],nodes[random_num1])] = (random_num3,random_num4)
 
 
-def show_bruteforce_info(route_node_scenarios, route_scenarios, compare_cost, min_regret, max_regret):
+def show_info(route_node_scenarios, route_scenarios, compare_cost, min_regret, max_regret):
         print("Path of the route")
         print(route_node_scenarios)
         print("All possible configurations of the route path")
@@ -85,29 +85,6 @@ def show_bruteforce_info(route_node_scenarios, route_scenarios, compare_cost, mi
         print(f"Min Regret of route {min_regret}")
         print(f"Max Regret of route {max_regret}")
         print()
-
-def brutforce_without_range(start_node, end_node, connections, scenarios, edge_list):
-    all_routes = find_all_routes(start_node, end_node, connections)
-    dijkstra_scenarios = dijkstra_on_scenarios(scenarios,connections, start_node, end_node)
-    min_path = min(dijkstra_scenarios, key=lambda x: x['Dijkstra outcome'])
-    regret_results = {}
-    for route in all_routes:
-        route_node_scenarios = []
-        weights_of_scenario = []
-        for i in range(len(route)-1):
-            route_node_scenarios.append((route[i], route[i+1]))
-            if (route[i], route[i+1]) in edge_list:
-                weights_of_scenario.append(list(edge_list[(route[i], route[i+1])]))
-            else:
-                weights_of_scenario.append(list(edge_list[(route[i+1], route[i])]))
-
-        route_scenarios = generate_scenarios(weights_of_scenario)
-        compare_costs = compare_cost_djikstra(get_cost(route_scenarios), min_path)
-        min_regret, max_regret = max_min_regret_for_action(compare_costs)
-        regret_results[str(route)] = [min_regret, max_regret]
-        show_bruteforce_info(route_node_scenarios, route_scenarios, compare_costs, min_regret, max_regret)
-
-    return all_routes, regret_results
 
 
 def minmax_regret_range(start_node, end_node, connections, scenarios, edge_list, vehicle_range, edge_distance, node_charger):
@@ -134,7 +111,7 @@ def minmax_regret_range(start_node, end_node, connections, scenarios, edge_list,
         compare_costs = compare_cost_djikstra(get_cost(route_scenarios), min_path)
         max_regret, min_regret = max_min_regret_for_action(compare_costs)
         regret_results[str(route)] = [min_regret, max_regret]
-        show_bruteforce_info(route_node_scenarios, route_scenarios, compare_costs, min_regret, max_regret)
+        show_info(route_node_scenarios, route_scenarios, compare_costs, min_regret, max_regret)
     return all_routes, regret_results, charging_route_info
 
 def check_route_if_possible(route, vehicle_range, edge_distance, node_charger):
