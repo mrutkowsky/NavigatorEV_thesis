@@ -13,7 +13,7 @@ def Navigator(nodes_number, connections_number, amount_of_nodes_with_chargers, m
     edge_weights = list(edge_list.values())
     add_edge_distances_and_set_random_chargers(amount_of_nodes_with_chargers, edge_list, edge_distance, nodes, node_charger)
     scenarios = generate_scenarios(edge_weights)
-    # Best route considering range and chargers
+
     all_routes, results, charging_info = minmax_regret_range(start_node, end_node, connections, scenarios, edge_list, vehicle_range, edge_distance, node_charger)
     biggest_min = 0
     path_with_biggest_min = ""
@@ -30,7 +30,6 @@ def Navigator(nodes_number, connections_number, amount_of_nodes_with_chargers, m
     charging_suggestions = generate_charging_suggestion(charging_info, path_with_smallest_max)
     response = {
         "route_connections": connections,
-        # "edge_list": edge_list,
         "path_with_biggest_min": path_with_biggest_min,
         "path_with_smallest_max": path_with_smallest_max,
         "shortest_path": shortest_path,

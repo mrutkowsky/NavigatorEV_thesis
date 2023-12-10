@@ -52,14 +52,13 @@ def update_user_info(file_path, user_data, new_user_data):
     print(user_data)
     print(new_user_data)
     try:
-        # Update user data based on the provided update_data
+
         for key, value in new_user_data.items():
             print(key, value)
             if key in user_data and value != '':
                 print(user_data[key])
                 user_data[key] = value
 
-        # Save the updated user data to the JSON file
         save_user_data(file_path, user_data)
 
         return user_data
@@ -69,9 +68,9 @@ def update_user_info(file_path, user_data, new_user_data):
 def clear_static_folder(app):
     static_folder = app.static_folder
 
-    # Ensure the static folder exists
+
     if os.path.exists(static_folder):
-        # Iterate over all files in the static folder and delete them
+
         for filename in os.listdir(static_folder):
             file_path = os.path.join(static_folder, filename)
             try:
@@ -84,15 +83,15 @@ def clear_static_folder(app):
 
 
 def validate_node_range(start_node, end_node, NODES_NUMBER):
-    # Extract the valid range based on nodes_number
+
     valid_range = [chr(ord('A') + i) for i in range(NODES_NUMBER)]
 
-    # Check if the provided nodes are within the valid range
+
     if start_node not in valid_range or end_node not in valid_range:
         return ValueError(f"Invalid node(s) in the range. Nodes should be in the range {', '.join(valid_range)}.")
     else:
         nodes_in_range = True
-    # Return the valid range if input is correct
+
     return nodes_in_range # f"Valid range: {input_range}"
 
 def display_nodes(nodes_number):
@@ -122,15 +121,15 @@ def display_nodes(nodes_number):
 
     filename = 'map' + generate_unique_filename()
     filepath = 'static/' + filename
-    # Create an empty graph
+
     G = nx.Graph()
-    # Add nodes to the graph
+
     for node in pos:
         G.add_node(node, pos=pos[node])
-    # Ensure the number of nodes in the graph is equal to nodes_number
+
     if len(G.nodes) > nodes_number:
         G.remove_nodes_from(list(G.nodes)[nodes_number:])
-    # Draw the graph
+
     nx.draw_networkx_nodes(G, pos, node_size=700)
     nx.draw_networkx_labels(G, pos, font_size=20, font_family="sans-serif")
     ax = plt.gca()

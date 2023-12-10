@@ -65,13 +65,13 @@ def process_data():
             return render_template('index.html', 
                                     error_message=validation_output,
                                     map_path=nodes_map)
-    # You can process the data and return the results as needed
+
     except Exception as e:
-        # Log the error for further investigation
+
         print(f"An unexpected error occurred: {str(e)}")
         error_message = "No path available. Please try again"
         nodes_map = display_nodes(NODES_NUMBER)
-        # Display a user-friendly error message
+
         return render_template('index.html', 
                         error_message=error_message,
                         map_path=nodes_map)
@@ -86,9 +86,9 @@ def my_profile():
                                 user_data=user_data)
 
     elif request.method == 'POST':
-        # For POST request, update the user data file
+
         try:
-            # Update user data based on the posted JSON data
+
             posted_data = request.get_json()
             user_data.update(posted_data)
             return jsonify({"message": "User data updated successfully"})

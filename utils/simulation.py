@@ -27,7 +27,7 @@ def display_path_with_range(graph_connections, title, charging_info, connections
     filepath = 'static/' + filename
     type_range = True
     G = nx.Graph()
-    pos = nx.spring_layout(G, seed=7)  # positions for all nodes - seed for reproducibility
+    pos = nx.spring_layout(G, seed=7) 
     G, pos, connections = add_display_path_info(G, pos, connections, graph_connections, edge_list, edge_distance, type_range)
     G.clear()
     for node in node_charger:
@@ -49,12 +49,12 @@ def display_path_with_range(graph_connections, title, charging_info, connections
 
 def add_nodes_with_connections(nodes, connections, edge_list, nodes_number, connections_number, min_travel_time, max_travel_time, min_travel_time_difference, max_travel_time_difference):
     char = "A"
-    # Add nodes (names are letters in alphabetic order)
+
     for i in range(nodes_number):
         nodes.append(char)
         char = chr(ord(char)+1)
 
-    # Connect nodes randomly and assign them random values
+
     for _ in range(connections_number):
         random_num1 = 0
         random_num2 = 0
@@ -225,11 +225,11 @@ def add_display_path_info(G, pos, connections, graph_connections, edge_list, edg
         G.add_edge(str(connection[0]), str(connection[1]), weight=weight)
 
     nx.draw_networkx_nodes(G, pos, node_size=700)
-    # edges
+
     nx.draw_networkx_edges(G, pos, width=6, edge_color="grey")
-    # node labels
+
     nx.draw_networkx_labels(G, pos, font_size=20, font_family="sans-serif")
-    # edge weight labels
+
     edge_labels = nx.get_edge_attributes(G, "weight")
     nx.draw_networkx_edge_labels(G, pos, edge_labels)
     G.clear()
@@ -244,15 +244,15 @@ def add_display_path_info(G, pos, connections, graph_connections, edge_list, edg
         G.add_edge(str(connection[0]), str(connection[1]), weight=weight)
 
 
-    # edges
+
     nx.draw_networkx_edges(G, pos, width=6, edge_color="black")
     nx.draw_networkx_edges(
         G, pos, width=6, alpha=0.5, edge_color="b", style="dashed"
     )
 
-    # node labels
+
     nx.draw_networkx_labels(G, pos, font_size=20, font_family="sans-serif")
-    # edge weight labels
+
     edge_labels = nx.get_edge_attributes(G, "weight")
     nx.draw_networkx_edge_labels(G, pos, edge_labels)
 

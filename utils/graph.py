@@ -79,8 +79,6 @@ def connections_of_node(node, connections):
     return con
 
 
-    #Function find_all_routes generates all possible routes between start_node and end_node for set of nodes and connections
-
 def find_all_routes(start_node, end_node, connections):
     routes = []
     visited = set()
